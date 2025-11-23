@@ -4,14 +4,16 @@ metadata:
   name: infisical
   namespace: argocd
 spec:
+  project: default
   destination:
     namespace: infisical
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
   source:
-    path: infisical-standalone
-    repoURL: 'https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/'
-    targetRevision: HEAD
-  project: default
+    repoURL: "https://dl.cloudsmith.io/public/infisical/helm-charts/helm/"
+    chart: "infisical"
+    targetRevision: "0.24.2"     # Example chart version (must be exact!)
+    helm:
+      releaseName: infisical
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
