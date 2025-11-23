@@ -2,15 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: infisical
-  namespace: infisical
+  namespace: argocd
 spec:
-  project: default
-  source:
-    chart: infisical-standalone
-    repoURL: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/
-    targetRevision: 1.16.1
-    helm:
-      releaseName: infisical-standalone
   destination:
-    server: "https://kubernetes.default.svc"
     namespace: infisical
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: infisical-standalone
+    repoURL: 'https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
