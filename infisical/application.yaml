@@ -9,9 +9,9 @@ spec:
     namespace: infisical
     server: https://kubernetes.default.svc
   source:
-    repoURL: "https://dl.cloudsmith.io/public/infisical/helm-charts/helm/"
-    chart: "infisical"
-    targetRevision: "0.24.2"     # Example chart version (must be exact!)
+    repoURL: "https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/"
+    chart: "infisical-standalone"
+    targetRevision: "1.7.2"
     helm:
       releaseName: infisical
   syncPolicy:
