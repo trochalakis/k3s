@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infisical
+spec:
+  project: default
+  source:
+    chart: infisical-standalone
+    repoURL: https://dl.cloudsmith.io/public/infisical/helm-charts/helm/charts/  # note: the oci:// syntax is not included.
+    targetRevision: 15.9.0
+  destination:
+    name: "in-cluster"
+    namespace: infisical
