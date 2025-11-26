@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: domain-locker
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    namespace: domain-locker
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: "https://lissy93.github.io/domain-locker/helm"
+    chart: "domain-locker"
+    targetRevision: "0.0.8"
+    helm:
+      releaseName: domain-locker
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
